@@ -9,6 +9,17 @@ module Enumerable
 
     self
   end
+
+  def my_select
+    return to_enum(:my_select) unless block_given?
+    match = []
+
+    self.my_each do |element|
+      match << element if yield(element)
+    end
+
+    match
+  end
 end
 
 # You will first have to define my_each
