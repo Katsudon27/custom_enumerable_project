@@ -40,6 +40,16 @@ module Enumerable
 
     false
   end
+
+  def my_none?
+    return to_enum(:my_none?) unless block_given?
+
+    self.my_each do |element|
+      return false if yield(element)
+    end
+
+    true
+  end
 end
 
 # You will first have to define my_each
