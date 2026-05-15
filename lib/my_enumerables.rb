@@ -1,5 +1,14 @@
 module Enumerable
   # Your code goes here
+  def my_each_with_index
+    return to_enum(:my_each_with_index) unless block_given?
+
+    self.length.times do |index|
+      yield(self[index], index)
+    end
+
+    self
+  end
 end
 
 # You will first have to define my_each
