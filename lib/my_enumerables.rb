@@ -8,4 +8,13 @@ end
 # to this method
 class Array
   # Define my_each here
+  def my_each
+    return to_enum(:my_each) unless block_given?
+
+    self.length.times do |index|
+      yield(self[index])
+    end
+
+    self
+  end
 end
