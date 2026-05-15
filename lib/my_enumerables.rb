@@ -73,6 +73,14 @@ module Enumerable
 
     mapped_array
   end
+
+  def my_inject(initial_value)
+    self.my_each do |element|
+      initial_value = yield(initial_value, element)
+    end
+
+    initial_value
+  end
 end
 
 # You will first have to define my_each
